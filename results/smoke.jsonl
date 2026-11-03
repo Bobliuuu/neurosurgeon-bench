@@ -1,0 +1,1 @@
+{"cartpole": {"score": 9.633333333333333, "q": 0.0, "index": 0.0}, "mountaincar": {"score": -200.0, "q": 0.0, "index": 0.0}, "catch": {"score": -6.276, "q": 0.0, "index": 0.0}, "INDEX": 0.0, "tokens": [651, 2068], "model": "anthropic/claude-haiku-4.5", "t": 1793678097.8862689}
