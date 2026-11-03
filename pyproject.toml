@@ -1,0 +1,10 @@
+[project]
+name = "nsbench"
+version = "0.1.0"
+description = "Neurosurgeon-Bench: can LLMs write and edit neural network weights?"
+requires-python = ">=3.10"
+dependencies = ["numpy", "openai>=1.40", "tqdm"]
+[project.optional-dependencies]
+steer = ["torch", "transformers", "accelerate"]
+[project.scripts]
+nsbench = "nsbench.cli:main"

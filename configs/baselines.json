@@ -1,0 +1,14 @@
+{
+ "cartpole": {
+  "random": 18.066,
+  "ref": 495.66
+ },
+ "mountaincar": {
+  "random": -200.0,
+  "ref": -134.1
+ },
+ "catch": {
+  "random": -6.276,
+  "ref": 9.2
+ }
+}

@@ -1,0 +1,21 @@
+# OpenRouter ids; edit freely. One per line.
+anthropic/claude-opus-4.5
+anthropic/claude-sonnet-4.5
+anthropic/claude-haiku-4.5
+openai/gpt-5
+openai/gpt-5-mini
+openai/gpt-4.1
+openai/gpt-4.1-mini
+openai/o4-mini
+google/gemini-2.5-pro
+google/gemini-2.5-flash
+x-ai/grok-4
+moonshotai/kimi-k2
+deepseek/deepseek-chat-v3.1
+deepseek/deepseek-r1
+z-ai/glm-4.6
+qwen/qwen3-235b-a22b
+qwen/qwen3-coder
+mistralai/mistral-large
+meta-llama/llama-4-maverick
+minimax/minimax-m2
