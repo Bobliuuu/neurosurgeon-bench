@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 600" width="980" height="600" role="img" aria-label="Track W round 1: top 10 models by index (50 = matches the reference)">
+<rect width="980" height="600" rx="16" fill="#0b0f17"/>
+<text x="32" y="44" font-family="ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-weight="700" font-size="22" fill="#e6edf6">Track W round 1: top 10 models by index (50 = matches the reference)</text>
+<text x="324" y="118" text-anchor="end" font-family="ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" fill="#8a98ad" font-weight="400">gpt-5.6-sol-pro</text>
+<rect x="338" y="96" width="492.0" height="30" rx="6" fill="#263044"/>
+<text x="840.0" y="117" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" font-weight="700" fill="#e6edf6">52.2</text>
+<text x="324" y="164" text-anchor="end" font-family="ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" fill="#8a98ad" font-weight="400">gemini-3.1-pro-preview-customtools</text>
+<rect x="338" y="142" width="492.0" height="30" rx="6" fill="#263044"/>
+<text x="840.0" y="163" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" font-weight="700" fill="#e6edf6">52.2</text>
+<text x="324" y="210" text-anchor="end" font-family="ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" fill="#8a98ad" font-weight="400">gpt-6.1-terra-pro</text>
+<rect x="338" y="188" width="492.0" height="30" rx="6" fill="#263044"/>
+<text x="840.0" y="209" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" font-weight="700" fill="#e6edf6">52.2</text>
+<text x="324" y="256" text-anchor="end" font-family="ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" fill="#8a98ad" font-weight="400">gemini-4-argon</text>
+<rect x="338" y="234" width="491.7" height="30" rx="6" fill="#263044"/>
+<text x="839.7" y="255" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" font-weight="700" fill="#e6edf6">52.1</text>
+<text x="324" y="302" text-anchor="end" font-family="ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" fill="#8a98ad" font-weight="400">claude-sonnet-5</text>
+<rect x="338" y="280" width="485.9" height="30" rx="6" fill="#263044"/>
+<text x="833.9" y="301" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" font-weight="700" fill="#e6edf6">51.5</text>
+<text x="324" y="348" text-anchor="end" font-family="ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" fill="#8a98ad" font-weight="400">claude-opus-4.7</text>
+<rect x="338" y="326" width="485.9" height="30" rx="6" fill="#263044"/>
+<text x="833.9" y="347" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" font-weight="700" fill="#e6edf6">51.5</text>
+<text x="324" y="394" text-anchor="end" font-family="ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" fill="#8a98ad" font-weight="400">claude-opus-4.8</text>
+<rect x="338" y="372" width="485.9" height="30" rx="6" fill="#263044"/>
+<text x="833.9" y="393" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" font-weight="700" fill="#e6edf6">51.5</text>
+<text x="324" y="440" text-anchor="end" font-family="ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" fill="#8a98ad" font-weight="400">claude-fable-5.1</text>
+<rect x="338" y="418" width="485.9" height="30" rx="6" fill="#263044"/>
+<text x="833.9" y="439" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" font-weight="700" fill="#e6edf6">51.5</text>
+<text x="324" y="486" text-anchor="end" font-family="ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" fill="#8a98ad" font-weight="400">gpt-6-astra</text>
+<rect x="338" y="464" width="485.9" height="30" rx="6" fill="#263044"/>
+<text x="833.9" y="485" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" font-weight="700" fill="#e6edf6">51.5</text>
+<text x="324" y="532" text-anchor="end" font-family="ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="15" fill="#8a98ad" font-weight="400">claude-opus-5.5</text>
+<rect x="338" y="510" width="485.9" height="30" rx="6" fill="#263044"/>
+<text x="833.9" y="531" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" font-weight="700" fill="#e6edf6">51.5</text>
+<text x="948" y="586" text-anchor="end" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#8a98ad">source: results/derived/readme_data.json · higher is better</text>
+</svg>

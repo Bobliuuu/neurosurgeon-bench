@@ -1,0 +1,289 @@
+# Spec for ~/video-readme-maker:  python3 ~/video-readme-maker/vrm.py all README.spec.yml
+# Numbers come from results/*.jsonl and configs/baselines_v2.json via tools/readme_data.py.
+project:
+  name: Neurosurgeon-Bench
+  emoji: "🧠"
+  tagline: "Can an LLM write and edit neural-network weights directly, with no gradients and no training?"
+  repo: Bobliuuu/neurosurgeon-bench
+hero:
+  title: Neurosurgeon-Bench
+  subtitle: "hand-written weights · sparse weight surgery · neuron steering"
+  chips: [Track W write, Track E edit, Track S steer, no gradients]
+theme: {accent: "#27c8e8", accent2: "#ff6b6b", accent3: "#f2c14e", good: "#3ddc97"}
+readme_out: README.md
+assets_dir: assets
+badges:
+  - {label: tracks, message: "W · E · S", color: 27c8e8}
+  - {label: write round 1, message: "{{ n.w1_models }} models scored", color: 3ddc97}
+  - {label: top index, message: "{{ n.w1_top }}", color: f2c14e}
+  - {label: python, message: "3.10+", color: 3776ab, logo: python}
+  - {label: license, message: MIT, color: f2c14e, link: LICENSE}
+nav:
+  - {emoji: "🎬", label: Video, anchor: video}
+  - {emoji: "🧪", label: Tracks, anchor: tracks}
+  - {emoji: "📊", label: Results, anchor: results}
+  - {emoji: "🧩", label: How it works, anchor: how-it-works}
+  - {emoji: "🚀", label: Quickstart, anchor: quickstart}
+  - {emoji: "⚠️", label: Limitations, anchor: caveats}
+  - {emoji: "🗺️", label: Repo map, anchor: repo-map}
+
+numbers:
+  w1_models: {file: results/derived/readme_data.json, path: w1_models}
+  w1_top: {file: results/derived/readme_data.json, path: w1_top, fmt: "{:.1f}"}
+  w1_ge50: {file: results/derived/readme_data.json, path: w1_ge50}
+  w1_zero: {file: results/derived/readme_data.json, path: w1_zero}
+  w1_median: {file: results/derived/readme_data.json, path: w1_median, fmt: "{:.1f}"}
+  w1_cp40: {file: results/derived/readme_data.json, path: w1_cartpole_ge40}
+  w1_mc40: {file: results/derived/readme_data.json, path: w1_mountaincar_ge40}
+  w1_ca40: {file: results/derived/readme_data.json, path: w1_catch_ge40}
+  w2_models: {file: results/derived/readme_data.json, path: w2_models}
+  w2_tasks: {file: results/derived/readme_data.json, path: w2_tasks}
+  w2_top: {file: results/derived/readme_data.json, path: w2_top, fmt: "{:.1f}"}
+  e_models: {file: results/derived/readme_data.json, path: e_models}
+  e_top: {file: results/derived/readme_data.json, path: e_top, fmt: "{:.1f}"}
+  e_full: {file: results/derived/readme_data.json, path: e_full}
+
+intro: |
+  <a id="video"></a>
+  Neurosurgeon-Bench asks whether a language model can **write** and **edit** neural-network weights directly: no gradient steps, no training, no code execution.
+  It is inspired by "Weight-Space Programming" (Writing Weights Index) and by neuron-level steering of open-weight models.
+  A reference policy found by CEM (not PPO, so the repo stays dependency-light) sets the 50-point mark; random weights set the floor.
+
+  > **What is measured so far.** Track W round 1 scored **{{ n.w1_models }} models** on three control games and the best index is **{{ n.w1_top }}**
+  > (matching the reference is 50, random is 0). A pilot of the harder v2 games and of Track E is run on 6 models each. **Track S (neuron steering) has code but no result files yet.**
+
+video:
+  url: ""
+  caption: "Explainer video (voice-over and subtitles): the tracks, how scoring works, and what the pilots show"
+  mp4: video/neurosurgeon_explainer.mp4
+  gif: video/preview.gif
+  srt: video/neurosurgeon_explainer.srt
+  poster: video/poster.png
+  out_dir: video/.render
+  fps: 24
+  max_mb: 22
+  render_crf: 18
+  poster_at: 40
+  music: true
+  voice: {engine: openai, voice: alloy, model: gpt-4o-mini-tts, tempo: 1.2}
+  scenes:
+    - type: title
+      title: Neurosurgeon-Bench
+      subtitle: "Can an LLM write and edit neural-network weights?"
+      chips: [no gradients, no training, three tracks]
+      say: "Neurosurgeon Bench. Can a language model write, or surgically edit, the weights of a neural network directly, with no gradients and no training? This is a short tour of the benchmark and what it shows so far."
+    - type: problem
+      heading: "The question"
+      bullets:
+        - "Models write code. Can they write weights?"
+        - "Track W: hand-write every weight of a tiny MLP"
+        - "Track E: repair a policy with at most 10 edits"
+        - "Track S: steer an open model by editing neurons"
+      say: "Models are good at writing code. Can they write weights? Track W asks a model to hand write every weight of a tiny network. Track E gives it a corrupted policy and lets it make at most ten edits. Track S asks it to steer an open weight model by editing individual neurons."
+    - type: architecture
+      diagram: flow
+      heading: "How a run is scored"
+      say: "The model sees a task description and replies with numbers. The harness loads them into a small MLP, runs the game with no further learning, and compares the score to a random floor and a C E M reference. Matching the reference scores fifty, random scores zero."
+    - type: chart
+      chart: hist
+      say: "Track W, round one, scored {{ n.w1_models }} models on three games: cart pole, mountain car and catch. The median index is {{ n.w1_median.numtext }}. {{ n.w1_ge50.numtext }} models reach fifty or more, meaning they match the reference, and {{ n.w1_zero.numtext }} score zero."
+    - type: chart
+      chart: top10
+      say: "The best models cluster just above fifty. The top index is {{ n.w1_top.numtext }}. On the three easy games, the ceiling is simply the reference."
+    - type: results
+      heading: "Round 1: models scoring 40 or more per game"
+      items:
+        - {label: "CartPole", number: w1_cp40}
+        - {label: "MountainCar", number: w1_mc40}
+        - {label: "Catch", number: w1_ca40}
+      say: "Per game, {{ n.w1_cp40.numtext }} models reach forty or more on cart pole, {{ n.w1_mc40.numtext }} on mountain car, and {{ n.w1_ca40.numtext }} on catch. Hand written weights are within reach for many models on easy control tasks."
+    - type: chart
+      chart: hard
+      say: "The harder v2 tasks separate models. In a pilot of {{ n.w2_models.numtext }} models over {{ n.w2_tasks.numtext }} tasks, only two models score well on pong, pendulum and an eight bit parity circuit; the best overall index is {{ n.w2_top.numtext }}."
+    - type: chart
+      chart: edit
+      say: "Track E, sparse weight editing: six weights of a trained policy are corrupted and the model may make ten edits. Of the pilot models, two achieve full recovery on cart pole, and one also on catch. Pong and pendulum are not recovered."
+    - type: caveats
+      heading: "Honest caveats"
+      bullets:
+        - "Pilots use 6 models and a single sample each"
+        - "Reference is CEM, not PPO: not comparable to the original index"
+        - "Track S has code, but no result files yet"
+        - "An index of 0 means no better-than-random weights were scored"
+      say: "Caveats. The v2 and edit results are pilots of six models, one sample each. The reference is C E M, so the index is not comparable to the original P P O based one. Track S has code but no results yet. And an index of zero means no better than random weights were scored."
+    - type: end
+      title: Neurosurgeon-Bench
+      subtitle: "Code, configs and results are in the repo"
+      say: "Code, configs and results are in the repo."
+
+tables:
+  - id: w1_tbl
+    title: "Track W round 1 (cartpole, mountaincar, catch): top 12 models by Writing Weights Index"
+    file: results/derived/readme_data.json
+    rows_path: w1_table
+    columns:
+      - {key: model, title: model}
+      - {key: cartpole, title: CartPole, align: right, fmt: "{:.1f}"}
+      - {key: mountaincar, title: MountainCar, align: right, fmt: "{:.1f}"}
+      - {key: catch, title: Catch, align: right, fmt: "{:.1f}"}
+      - {key: index, title: Index, align: right, fmt: "{:.1f}"}
+  - id: w2_tbl
+    title: "Track W v2 pilot (8 tasks, 6 models): index per task"
+    file: results/derived/readme_data.json
+    rows_path: w2_rows
+    columns:
+      - {key: model, title: model}
+      - {key: cartpole, title: cartpole, align: right, fmt: "{:.0f}"}
+      - {key: mountaincar, title: mcar, align: right, fmt: "{:.0f}"}
+      - {key: catch, title: catch, align: right, fmt: "{:.0f}"}
+      - {key: pong, title: pong, align: right, fmt: "{:.0f}"}
+      - {key: pendulum, title: pend., align: right, fmt: "{:.0f}"}
+      - {key: parity8, title: parity8, align: right, fmt: "{:.0f}"}
+      - {key: add3, title: add3, align: right, fmt: "{:.0f}"}
+      - {key: cmp3, title: cmp3, align: right, fmt: "{:.0f}"}
+      - {key: index, title: Index, align: right, fmt: "{:.1f}"}
+  - id: e_tbl
+    title: "Track E pilot (6 corrupted weights, at most 10 edits): recovery % per game"
+    file: results/derived/readme_data.json
+    rows_path: e_rows
+    columns:
+      - {key: model, title: model}
+      - {key: cartpole, title: cartpole, align: right, fmt: "{:.0f}"}
+      - {key: catch, title: catch, align: right, fmt: "{:.0f}"}
+      - {key: pong, title: pong, align: right, fmt: "{:.1f}"}
+      - {key: pendulum, title: pendulum, align: right, fmt: "{:.0f}"}
+      - {key: index, title: Index, align: right, fmt: "{:.1f}"}
+  - id: base_tbl
+    title: "Score floors and references (configs/baselines_v2.json)"
+    file: results/derived/readme_data.json
+    rows_path: baselines
+    columns:
+      - {key: task, title: task}
+      - {key: random, title: random floor, align: right, fmt: "{:.2f}"}
+      - {key: ref, title: reference (CEM / hand-built), align: right, fmt: "{:.2f}"}
+
+charts:
+  - id: hist
+    type: bar
+    title: "Track W round 1: models per Writing-Weights-Index band"
+    subtitle: "three games, one-shot hand-written weights"
+    file: results/derived/readme_data.json
+    rows_path: w1_hist
+    label: band
+    y: models
+    fmt: "{:.0f}"
+  - id: top10
+    type: bar
+    title: "Track W round 1: top 10 models by index (50 = matches the reference)"
+    file: results/derived/readme_data.json
+    rows_path: w1_top10
+    label: model
+    y: index
+    fmt: "{:.1f}"
+  - id: hard
+    type: gbar
+    title: "v2 pilot: index on the harder tasks"
+    subtitle: "pong, pendulum and an 8-bit parity circuit; 6 models"
+    better: higher
+    file: results/derived/readme_data.json
+    rows_path: w2_hard
+    cat: task
+    series: model
+    y: index
+    fmt: "{:.0f}"
+  - id: edit
+    type: gbar
+    title: "Track E pilot: recovery (%), models with a Track E index above 10"
+    subtitle: "corrupted policy, at most 10 edits"
+    better: higher
+    file: results/derived/readme_data.json
+    rows_path: e_chart
+    cat: game
+    series: model
+    y: recovery
+    fmt: "{:.0f}"
+
+diagrams:
+  - id: flow
+    title: "One scored run"
+    nodes:
+      - {id: task, label: "task prompt", sub: "game, input and output dims, flat weight order", col: 0, row: 0, kind: io}
+      - {id: llm, label: "LLM", sub: "reasons, replies with numbers (JSON)", col: 1, row: 0, kind: accent}
+      - {id: mlp, label: "tiny MLP", sub: "8 hidden units, tanh", col: 2, row: 0}
+      - {id: env, label: "game rollouts", sub: "CartPole, MountainCar, Catch, ...", col: 3, row: 0}
+      - {id: idx, label: "index", sub: "100 q/(1+q); reference = 50", col: 3, row: 1, kind: io}
+      - {id: base, label: "random floor + CEM reference", sub: "configs/baselines*.json", col: 2, row: 1, kind: store}
+    edges:
+      - {from: task, to: llm}
+      - {from: llm, to: mlp, label: "weights"}
+      - {from: mlp, to: env}
+      - {from: env, to: idx, label: "score"}
+      - {from: base, to: idx}
+
+sections:
+  - title: Tracks
+    emoji: "🧪"
+    id: tracks
+    body: |
+      | Track | Task | Metric |
+      |---|---|---|
+      | **W: Writing Weights** | LLM hand-writes all weights of a tiny MLP (8 hidden) for CartPole, MountainCar, Catch (v2: also Pong, Pendulum, parity8, add3, cmp3) | `Index = mean 100·q/(1+q)`, `q = max(0, score−random)/(ref−random)`; matching the reference = 50, random = 0 |
+      | **E: Editing Weights** | A CEM-trained policy gets 6 weights corrupted; the LLM sees the full weight vector and outputs at most 10 `[index, new_value]` edits | recovery = (edited − corrupted)/(clean − corrupted), clipped to [0, 1] |
+      | **S: Neuron Surgery** | LLM picks `(layer, neuron, dose)` edits to push an open-weight model toward a persona trait (`evil`, `sycophancy`, `hallucination`) | judged trait shift and coherence, against unedited and random-neuron controls |
+
+      Track S edit: at the input of `mlp.down_proj`, `act[N] += dose · median_resid_norm / ‖W_down[:,N]‖` on every token. Published edits can be replayed with `--edit L,N,dose`; `--agent MODEL` lets a model choose edits from a contrastive-probe candidate list.
+      Track S is a safety and interpretability measurement of how easily models can locate and exploit trait neurons. Do not deploy edited models.
+  - title: Results
+    emoji: "📊"
+    id: results
+    body: "All numbers are computed from `results/*.jsonl` and `configs/baselines_v2.json` by `tools/readme_data.py`."
+    charts: [hist, top10]
+    tables: [w1_tbl]
+    after: |
+      Round 1 scored **{{ n.w1_models }} models** (latest row per model); the median index is {{ n.w1_median }}, {{ n.w1_ge50 }} models reach 50 or more and {{ n.w1_zero }} score 0.
+      Models with 40+ on a single game: CartPole {{ n.w1_cp40 }}, MountainCar {{ n.w1_mc40 }}, Catch {{ n.w1_ca40 }}.
+    details:
+      - summary: "v2 harder games (pilot, 6 models)"
+        charts: [hard]
+        tables: [w2_tbl, base_tbl]
+        body: "Best overall index in the pilot: {{ n.w2_top }}. Pong, pendulum and parity8 separate the models."
+      - summary: "Track E weight editing (pilot, 6 models)"
+        charts: [edit]
+        tables: [e_tbl]
+        body: "{{ n.e_full }} model-game pairs reach full recovery (cartpole and catch only); pong and pendulum are essentially not recovered. Top index {{ n.e_top }}."
+  - title: How it works
+    emoji: "🧩"
+    id: how-it-works
+    body: |
+      The model receives the game description, the network shape (`h = tanh(W1 @ obs + b1); logits = W2 @ h + b2`, 8 hidden units) and the flat parameter order, and must answer with a single JSON list of floats.
+      The harness evaluates the resulting policy on fresh episodes. Providers are called through OpenRouter (`nsbench/providers.py`); token usage is recorded per model.
+    diagrams: [flow]
+  - title: Quickstart
+    emoji: "🚀"
+    id: quickstart
+    body: |
+      ```bash
+      pip install -e .            # add .[steer] for Track S
+      python -m nsbench.baselines # regenerate configs/baselines.json (random floor, CEM ceiling; MountainCar ref is hand-built)
+      export OPENROUTER_API_KEY=...
+      nsbench write --models configs/models.txt --rounds 1     # one-shot; --rounds 3 adds score feedback
+      nsbench steer --target Qwen/Qwen3-8B --trait evil --agent anthropic/claude-sonnet-4.5
+      python tools/readme_data.py && python3 ~/video-readme-maker/vrm.py all README.spec.yml   # this README and video
+      ```
+      Results append to `results/*.jsonl`. The original short README is kept in [docs/ORIGINAL_README.md](docs/ORIGINAL_README.md).
+
+caveats:
+  - "**Pilots are small.** The v2 and Track E results are 6 models with one sample each."
+  - "**Reference is CEM, not PPO**, so index values are not comparable to the original PPO-based Writing Weights Index."
+  - "**Track S has code but no result files yet**; nothing is claimed about neuron steering."
+  - "**An index of 0** means no better-than-random weights were scored for that model."
+  - "**Easy games saturate:** on CartPole, MountainCar and Catch, many models reach the reference, so the index separates little there."
+
+repo_map:
+  - {path: nsbench/, desc: "envs, baselines, the three tracks, providers, CLI"}
+  - {path: configs/, desc: "model lists, baselines (random floor, reference), Track E tasks"}
+  - {path: results/, desc: "raw jsonl outputs; results/derived is produced by tools/readme_data.py"}
+  - {path: tools/readme_data.py, desc: "derives README and video numbers from results/"}
+  - {path: README.spec.yml, desc: "spec for video-readme-maker"}
+  - {path: video/, desc: "explainer mp4, srt, poster, preview gif (generated)"}
+footer: "Generated with video-readme-maker from README.spec.yml and results/."
