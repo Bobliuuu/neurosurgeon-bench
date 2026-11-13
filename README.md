@@ -6,7 +6,7 @@
 
 **Can an LLM write and edit neural-network weights directly, with no gradients and no training?**
 
-![tracks: W · E · S](https://img.shields.io/badge/tracks-W%20%C2%B7%20E%20%C2%B7%20S-27c8e8) ![write round 1: 71 models scored](https://img.shields.io/badge/write%20round%201-71%20models%20scored-3ddc97) ![top index: 52.2](https://img.shields.io/badge/top%20index-52.2-f2c14e) ![python: 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab?logo=python&logoColor=white) [![license: MIT](https://img.shields.io/badge/license-MIT-f2c14e)](LICENSE)
+![tracks: W · E · S](https://img.shields.io/badge/tracks-W%20%C2%B7%20E%20%C2%B7%20S-27c8e8) ![write round 1: 71 models scored](https://img.shields.io/badge/write%20round%201-71%20models%20scored-3ddc97) ![top index: 52.2](https://img.shields.io/badge/top%20index-52.2-f2c14e) [![release: v0.1.0](https://img.shields.io/badge/release-v0.1.0-27c8e8?logo=github&logoColor=white)](https://github.com/Bobliuuu/neurosurgeon-bench/releases/tag/v0.1.0) [![Hugging Face: results dataset](https://img.shields.io/badge/Hugging%20Face-results%20dataset-ffd21e?logo=huggingface&logoColor=white)](https://huggingface.co/datasets/Bobliu/neurosurgeon-bench) ![python: 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab?logo=python&logoColor=white) [![license: MIT](https://img.shields.io/badge/license-MIT-f2c14e)](LICENSE)
 
 [🎬 Video](#video) · [🧪 Tracks](#tracks) · [📊 Results](#results) · [🧩 How it works](#how-it-works) · [🚀 Quickstart](#quickstart) · [⚠️ Limitations](#caveats) · [🗺️ Repo map](#repo-map)
 

@@ -16,6 +16,8 @@ badges:
   - {label: tracks, message: "W · E · S", color: 27c8e8}
   - {label: write round 1, message: "{{ n.w1_models }} models scored", color: 3ddc97}
   - {label: top index, message: "{{ n.w1_top }}", color: f2c14e}
+  - {label: release, message: v0.1.0, color: 27c8e8, logo: github, link: "https://github.com/Bobliuuu/neurosurgeon-bench/releases/tag/v0.1.0"}
+  - {label: Hugging Face, message: "results dataset", color: ffd21e, logo: huggingface, link: "https://huggingface.co/datasets/Bobliu/neurosurgeon-bench"}
   - {label: python, message: "3.10+", color: 3776ab, logo: python}
   - {label: license, message: MIT, color: f2c14e, link: LICENSE}
 nav:
